@@ -14,7 +14,7 @@ class CreateFreetimeTable extends Migration
     {
         Schema::create('freetime', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('activity_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamp('start_at');
             $table->timestamp('end_at');
             $table->timestamps();

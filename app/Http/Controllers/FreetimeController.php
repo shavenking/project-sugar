@@ -7,19 +7,17 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Entities\Activity;
-use App\Entities\Freetime;
-
 class FreetimeController extends Controller
 {
-    public function store(Activity $activities, Request $request, Freetime $model)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'start_at' => 'required|date',
             'end_at' => 'required|date'
         ]);
 
-        $freetime = $activities->freetime()->create($request->all());
+        $user = $request->user();
+        $freetime = $user->freetimeSet()->create($request->all());
 
         return response()->json([
             'data' => [

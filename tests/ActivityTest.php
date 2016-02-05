@@ -6,17 +6,19 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 
 class ActivityTest extends TestCase
 {
-    use DatabaseTransactions, DatabaseMigrations;
+    use DatabaseTransactions;
 
     public function testCreateActivity()
     {
+        $user     = factory(\App\User::class)->create();
         $activity = factory(\App\Entities\Activity::class)->make();
 
-        $this->post('/activities', $activity->toArray())
+        $this->actingAs($user)
+             ->post('/activities', $activity->toArray())
              ->seeJson([
                 'data' => [
                     'type' => 'activities',
-                    'attributes' => array_only($activity->attributesToArray(), ['name'])
+                    'attributes' => array_only($activity->toArray(), ['name'])
                 ]
             ]);
     }

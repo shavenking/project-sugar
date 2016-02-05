@@ -23,4 +23,14 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function activities()
+    {
+        return $this->hasMany(\App\Entities\Activity::class);
+    }
+
+    public function freetimeSet()
+    {
+        return $this->hasMany(\App\Entities\Freetime::class);
+    }
 }
