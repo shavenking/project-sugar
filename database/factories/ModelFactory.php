@@ -25,3 +25,13 @@ $factory->define(App\Entities\Activity::class, function (Faker\Generator $faker)
         'name' => $faker->name
     ];
 });
+
+$factory->define(App\Entities\Freetime::class, function (Faker\Generator $faker) {
+    $startAt = $faker->dateTimeBetween('- 10 days', 'now');
+    $endAt = $faker->dateTimeBetween('now', '+ 5 days');
+
+    return [
+        'start_at' => $startAt,
+        'end_at' => $endAt
+    ];
+});
