@@ -16,7 +16,9 @@ class ActivityController extends Controller
         ]);
 
         $user = $request->user();
-        $activity = $user->activities()->create($request->all());
+        $activity = $user->activities()->create($request->all(), [
+            'is_admin' => true
+        ]);
 
         return response()->json([
             'data' => [

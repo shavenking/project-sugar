@@ -26,7 +26,9 @@ class User extends Authenticatable
 
     public function activities()
     {
-        return $this->hasMany(\App\Entities\Activity::class);
+        return $this->belongsToMany(\App\Entities\Activity::class)
+                    ->withPivot('is_admin')
+                    ->withTimestamps();
     }
 
     public function freetimeSet()
