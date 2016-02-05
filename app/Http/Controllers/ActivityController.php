@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-class ActivitiesController extends Controller
+class ActivityController extends Controller
 {
     public function store(Request $request)
     {
@@ -20,7 +20,7 @@ class ActivitiesController extends Controller
 
         return response()->json([
             'data' => [
-                'type' => 'activities',
+                'type' => 'activity',
                 'attributes' => array_only($activity->toArray(), ['name'])
             ]
         ]);

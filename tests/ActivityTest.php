@@ -14,10 +14,10 @@ class ActivityTest extends TestCase
         $activity = factory(\App\Entities\Activity::class)->make();
 
         $this->actingAs($user)
-             ->post('/activities', $activity->toArray())
+             ->post('/activity', $activity->toArray())
              ->seeJson([
                 'data' => [
-                    'type' => 'activities',
+                    'type' => 'activity',
                     'attributes' => array_only($activity->toArray(), ['name'])
                 ]
             ]);
