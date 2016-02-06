@@ -14,7 +14,8 @@ class FreetimeTest extends TestCase
         $freetime = factory(\App\Entities\Freetime::class)->make();
 
         $this->actingAs($user)
-            ->post(
+            ->json(
+                'POST',
                 route('api.freetime.store'), 
                 [
                     'start_at' => (string) $freetime->start_at,

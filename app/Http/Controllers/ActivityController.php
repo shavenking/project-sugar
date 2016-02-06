@@ -39,7 +39,7 @@ class ActivityController extends Controller
             'is_admin' => true
         ]);
 
-        if (!$request->ajax()) {
+        if (!$request->wantsJson()) {
             return redirect()->route('activity.show', $activity->id);
         }
 

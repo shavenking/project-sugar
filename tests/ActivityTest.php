@@ -14,7 +14,8 @@ class ActivityTest extends TestCase
         $activity = factory(\App\Entities\Activity::class)->make();
 
         $this->actingAs($user)
-             ->post(
+             ->json(
+                 'POST',
                  route('api.activity.store'),
                  $activity->toArray()
              )
