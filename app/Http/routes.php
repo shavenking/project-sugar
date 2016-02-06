@@ -11,10 +11,12 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/home', 'HomeController@index');
     Route::get('/', function () {
         return view('welcome');
     });
-
-    Route::resource('activity', ActivityController::class);
 });
+
+Route::group(['middleware' => ['web', 'auth']], function () {
+    Route::get('/home', 'HomeController@index');
+    Route::resource('activity', ActivityController::class);
+});    
