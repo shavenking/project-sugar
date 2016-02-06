@@ -15,9 +15,11 @@ class AttendeeController extends Controller
     {
         $user = $request->user();
 
-        $user->activities()->sync([
-            "{$activity->id}" => ['is_admin' => false]
-        ]);
+        $user->activities()->attach($activity->id, ['is_admin' => false]);
+
+        if (!$request->wantsJson()) {
+            return redirect()->route('activity.show', $activity->id);
+        }
 
         return response()->json();
     }

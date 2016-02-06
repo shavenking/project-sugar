@@ -23,6 +23,10 @@
         .fa-btn {
             margin-right: 6px;
         }
+
+        .btn-text-only {
+            padding: 0;
+        }
     </style>
 </head>
 <body id="app-layout">

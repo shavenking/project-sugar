@@ -22,13 +22,16 @@ class Activity extends Model
 
     public function scopeWhereUserNotAttended($query, \App\User $user)
     {
-        return $this->userAttended($user, '!=');
+        return $this->userAttended($user, true);
     }
 
-    protected function userAttended(\App\User $user, $operator = '=')
+    protected function userAttended(\App\User $user, $inverse = false)
     {
-        return $this->whereHas('attendees', function ($q) use ($user, $operator) {
-            $q->where('user_id', $operator, $user->id);
-        });   
+        $operator = $inverse ? '=' : '>=';
+        $count = $inverse ? 0 : 1;
+
+        return $this->whereHas('attendees', function ($q) use ($user) {
+            $q->whereUserId($user->id);
+        }, $operator, $count);
     }
 }

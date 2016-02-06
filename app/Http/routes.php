@@ -5,7 +5,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
 
     Route::resource('activity.available-date', AvailableDateController::class);
     Route::resource('activity.attendee', AttendeeController::class);
-    Route::resource('activity', ActivityController::class);    
+    Route::resource('activity', ActivityController::class);
 });
 
 Route::group(['middleware' => 'web'], function () {
@@ -18,5 +18,7 @@ Route::group(['middleware' => 'web'], function () {
 
 Route::group(['middleware' => ['web', 'auth']], function () {
     Route::get('/home', 'HomeController@index');
+
+    Route::resource('activity.attendee', AttendeeController::class);
     Route::resource('activity', ActivityController::class);
-});    
+});
