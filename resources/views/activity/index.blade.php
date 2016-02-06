@@ -3,11 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
-            <p>
-                <a href="{{ route('activity.create') }}" class="btn btn-primary">Create</a>    
-            </p>
-        </div>
+        @if (!count($activities))
+            <div class="col-md-10 col-md-offset-1">
+                <div class="alert alert-info">
+                    Oops! There is no matched activity.
+                </div>
+            </div>
+        @endif
+
         @foreach ($activities as $activity)
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">

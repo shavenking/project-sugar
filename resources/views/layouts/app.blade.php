@@ -48,7 +48,15 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Home</a></li>
-                    <li><a href="{{ route('activity.index') }}">Activity</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activity <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ route('activity.index') }}">All</a></li>
+                            <li><a href="{{ route('activity.index', ['filter[attended]' => 0]) }}">Unattended</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ route('activity.create') }}">Create</a></li>
+                        </ul>
+                    </li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
