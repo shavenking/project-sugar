@@ -13,21 +13,17 @@ class ActivityController extends Controller
 {
     public function index(Activity $activity, Request $request)
     {
-        $query = $activity->newQuery();
-
         if ($request->has('filter.attended')) {
             $wantAttended = (bool) $request->input('filter.attended');
-            
-            $query->whereHas('attendees', function ($q) use ($request, $wantAttended) {
-                if ($wantAttended) {
-                    $q->whereUserId($request->user()->id);    
-                } else {
-                    $q->where('user_id', '!=', $request->user()->id);
-                }
-            });
+
+            if ($wantAttended) {
+                $activity = $activity->whereUserAttended($request->user());
+            } else {
+                $activity = $activity->whereUserNotAttended($request->user());
+            }
         }
 
-        $activities = $query->get();
+        $activities = $activity->get();
 
         return view('activity.index')->withActivities($activities);
     }

@@ -14,4 +14,21 @@ class Activity extends Model
             ->withPivot('is_admin')
             ->withTimestamps();
     }
+
+    public function scopeWhereUserAttended($query, \App\User $user)
+    {
+        return $this->userAttended($user);
+    }
+
+    public function scopeWhereUserNotAttended($query, \App\User $user)
+    {
+        return $this->userAttended($user, '!=');
+    }
+
+    protected function userAttended(\App\User $user, $operator = '=')
+    {
+        return $this->whereHas('attendees', function ($q) use ($user, $operator) {
+            $q->where('user_id', $operator, $user->id);
+        });   
+    }
 }
