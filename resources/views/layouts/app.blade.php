@@ -51,7 +51,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Activity <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ route('activity.index') }}">All</a></li>
+                            <li><a href="{{ route('activity.index', ['filter[attended]' => 1]) }}">Attended</a></li>
                             <li><a href="{{ route('activity.index', ['filter[attended]' => 0]) }}">Unattended</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ route('activity.create') }}">Create</a></li>
