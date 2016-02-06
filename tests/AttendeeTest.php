@@ -21,7 +21,7 @@ class AttendeeTest extends TestCase
         );
 
         $this->actingAs($anotherUser)->post(
-            route('activity.attendee.store', $activity->id), []
+            route('api.activity.attendee.store', $activity->id), []
         )->seeJson();
     }
 }

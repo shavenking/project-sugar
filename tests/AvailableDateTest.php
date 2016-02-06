@@ -18,7 +18,7 @@ class AvailableDateTest extends TestCase
         $this->addAttendee($activity, [$anotherUser]);
 
         $this->actingAs($user)->get(
-            route('activity.available-date.index', $activity->id)
+            route('api.activity.available-date.index', $activity->id)
         )->seeJsonStructure([
             'data' => [
                 'type', 

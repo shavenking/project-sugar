@@ -1,6 +1,6 @@
 <?php
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
     Route::resource('freetime', FreetimeController::class);
 
     Route::resource('activity.available-date', AvailableDateController::class);

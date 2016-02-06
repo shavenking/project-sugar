@@ -15,7 +15,7 @@ class FreetimeTest extends TestCase
 
         $this->actingAs($user)
             ->post(
-                route('freetime.store'), 
+                route('api.freetime.store'), 
                 [
                     'start_at' => (string) $freetime->start_at,
                     'end_at' => (string) $freetime->end_at

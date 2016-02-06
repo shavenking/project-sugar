@@ -15,7 +15,7 @@ class ActivityTest extends TestCase
 
         $this->actingAs($user)
              ->post(
-                 route('activity.store'),
+                 route('api.activity.store'),
                  $activity->toArray()
              )
              ->seeJson([
