@@ -14,10 +14,13 @@ class FreetimeTest extends TestCase
         $freetime = factory(\App\Entities\Freetime::class)->make();
 
         $this->actingAs($user)
-            ->post("/freetime", [
-                'start_at' => (string) $freetime->start_at,
-                'end_at' => (string) $freetime->end_at
-            ])->seeJson([
+            ->post(
+                route('freetime.store'), 
+                [
+                    'start_at' => (string) $freetime->start_at,
+                    'end_at' => (string) $freetime->end_at
+                ]
+            )->seeJson([
                 'data' => [
                     'type' => 'freetime',
                     'attributes' => [
