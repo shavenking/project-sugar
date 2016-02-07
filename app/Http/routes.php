@@ -11,9 +11,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
 Route::group(['middleware' => 'web'], function () {
     Route::auth();
 
-    Route::get('/', function () {
-        return view('welcome');
-    });
+    Route::get('/', HomeController::class . '@index');
 });
 
 Route::group(['middleware' => ['web', 'auth']], function () {

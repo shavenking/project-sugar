@@ -12,8 +12,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        if (!$request->user()) {
+            return view('landing');
+        }
+
         return view('home');
     }
 }
