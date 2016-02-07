@@ -27,6 +27,14 @@
                             </div>
                         @endif
 
+                        @if (request()->has('filter.attended') && (bool) request()->input('filter.attended'))
+                            <div class="pull-right">
+                                <a href="{{ route('activity.show', $activity->id) }}">
+                                    View Activity&nbsp;<i class="fa fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        @endif
+
                         {{ $activity->name }}
                     </div>
 
