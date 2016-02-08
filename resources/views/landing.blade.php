@@ -18,8 +18,6 @@
         body {
             font-family: 'Lato';
 
-            padding-top: 70px;
-
             background: url(landing_background.jpg) no-repeat center top fixed;
             -o-background-size: cover;
             -moz-background-size: cover;
