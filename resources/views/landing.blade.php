@@ -35,6 +35,8 @@
             top: 0;
             width: 100%;
             height: 100%;
+            min-width: 100%;
+            min-height: 100%;
             z-index: -1;
             opacity: 0.5;
             background: url(landing_background.jpg) no-repeat center top fixed;
