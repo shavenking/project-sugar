@@ -35,4 +35,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Entities\Freetime::class);
     }
+
+    public function goals()
+    {
+        return $this->belongsToMany(\App\Entities\Goal::class)
+            ->withPivot('is_admin')
+            ->withTimestamps();
+    }
 }

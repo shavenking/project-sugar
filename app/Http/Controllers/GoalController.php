@@ -15,7 +15,10 @@ class GoalController extends Controller
     {
         $attributes = $request->input('attributes');
 
-        $newGoal = $goal->create($attributes);
+        $user = $request->user();
+        $newGoal = $user->goals()->create($attributes, [
+            'is_admin' => true
+        ]);
 
         return response()->json([
             'data' => [
