@@ -17,28 +17,9 @@
     <style>
         body {
             font-family: 'Lato';
-        }
 
-        #app-layout {
             padding-top: 70px;
-            height: 100%;
-            background: black;
-            color: white;
-            overflow: hidden;
-        }
 
-        #app-layout:before {
-            content: ' ';
-            display: block;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            min-width: 100%;
-            min-height: 100%;
-            z-index: -1;
-            opacity: 0.5;
             background: url(landing_background.jpg) no-repeat center top fixed;
             -o-background-size: cover;
             -moz-background-size: cover;
@@ -46,17 +27,31 @@
             background-size: cover;
         }
 
-        #app-layout a {
+        .introduction {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            opacity: .6;
+            background-color: black;
+            color: white;
+            padding-top: 70px;
+        }
+
+        .introduction a {
             color: white;
             text-decoration: underline;
         }
     </style>
 </head>
-<body id="app-layout" class="text-center">
-    <h1>Sugar</h1>
-    <p>I love to Code, but I have no idea what to...</p>
-    <p>Any <a href="https://github.com/shavenking/project-sugar/labels/feature" target="_blank">feature issue <i class="fa fa-external-link-square"></i></a> would be welcome.</p>
-    <p><a href="{{ url('login') }}">Try Application.</a></p>
-    <h3>BIG THX!</h3>
+<body class="text-center">
+    <div class="introduction">
+        <h1>Sugar</h1>
+        <p>I love to Code, but I have no idea what to...</p>
+        <p>Any <a href="https://github.com/shavenking/project-sugar/labels/feature" target="_blank">feature issue <i class="fa fa-external-link-square"></i></a> would be welcome.</p>
+        <p><a href="{{ url('login') }}">Try Application.</a></p>
+        <h3>BIG THX!</h3>
+    </div>
 </body>
 </html>
