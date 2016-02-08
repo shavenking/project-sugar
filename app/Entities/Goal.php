@@ -14,4 +14,16 @@ class Goal extends Model
     {
         return 'goals';
     }
+
+    public function tasks()
+    {
+        return $this->hasMany(\App\Entities\Task::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(\App\User::class)
+            ->withPivot('is_admin')
+            ->withTimestamps();
+    }
 }

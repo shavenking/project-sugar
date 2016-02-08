@@ -44,3 +44,9 @@ $factory->define(App\Entities\Goal::class, function (Faker\Generator $faker) {
         'due_at' => $dueAt
     ];
 });
+
+$factory->define(App\Entities\Task::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->title
+    ];
+});

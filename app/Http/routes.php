@@ -7,6 +7,7 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
     Route::resource('activity.attendee', AttendeeController::class);
     Route::resource('activity', ActivityController::class);
 
+    Route::resource('goals.tasks', TaskController::class);
     Route::resource('goals', GoalController::class);
 });
 
