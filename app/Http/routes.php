@@ -6,6 +6,8 @@ Route::group(['prefix' => 'api', 'middleware' => 'auth'], function () {
     Route::resource('activity.available-date', AvailableDateController::class);
     Route::resource('activity.attendee', AttendeeController::class);
     Route::resource('activity', ActivityController::class);
+
+    Route::resource('goals', GoalController::class);
 });
 
 Route::group(['middleware' => 'web'], function () {

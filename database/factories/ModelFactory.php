@@ -35,3 +35,12 @@ $factory->define(App\Entities\Freetime::class, function (Faker\Generator $faker)
         'end_at' => $endAt
     ];
 });
+
+$factory->define(App\Entities\Goal::class, function (Faker\Generator $faker) {
+    $dueAt = $faker->dateTimeBetween('now', '+ 5 days');
+
+    return [
+        'title' => $faker->title,
+        'due_at' => $dueAt
+    ];
+});
