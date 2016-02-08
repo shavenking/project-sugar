@@ -18,7 +18,7 @@ class GoalTest extends TestCase
                 'POST',
                 route('api.goals.store'),
                 [
-                    'type' => 'goals',
+                    'type' => $goal->getType(),
                     'attributes' => [
                         'title' => $goal->title,
                         'due_at' => (string) $goal->due_at
@@ -31,7 +31,7 @@ class GoalTest extends TestCase
                     'attributes' => ['title', 'due_at']
                 ]
             ])->seeJsonContains([
-                'type' => 'goals'
+                'type' => $goal->getType()
             ]);
     }
 }
